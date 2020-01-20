@@ -1,14 +1,17 @@
-const express = require('express');
-const mongoose = require('mongoose');
+const express    = require('express');
+const mongoose   = require('mongoose');
 const bodyParser = require('body-parser');
+const cors       = require('cors')
+
+ 
 
 
 // routes 
-const Items = require('./routes/api/Items');
+const User = require('./routes/api/User');
 
 
 const app = express();
-
+app.use(cors())
 //bodyParser Middleware
 
 app.use(bodyParser.json());
@@ -26,7 +29,7 @@ mongoose
 
 // api cals
 
-app.use('/api/items',Items);
+app.use('/api/user',User);
 const port = process.env.PORT || 5000;
 
 app.listen(port,()=> console.log(`Server started on port ${port}`)); 

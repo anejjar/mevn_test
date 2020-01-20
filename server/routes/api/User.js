@@ -2,12 +2,13 @@ const express = require('express');
 const router  = express.Router();
 
 // item model
-const Item =require('../../moduls/Item')
+const User =require('../../moduls/User')
 
 // @route GET api/items
 // @desc Get all Items
 // @access Public
 router.get('/',(req,res)=>{
+    res.send('ccc');
     // Item
     // .find()
     // .sort({date:-1})
@@ -16,17 +17,19 @@ router.get('/',(req,res)=>{
 }) 
 
 
-// @route POST api/items
+// @route POST api/user/register
 // @desc create an Item
 // @access Public
-router.post('/',(req,res)=>{
-    const newItem = new Item({
-        name:req.body.email
+router.post('/register', (req,res)=>{
+    const newUser = new User({
+        name:req.body.name,
+        email:req.body.email,
+        password:req.body.password
     });
 
-    newItem
+    newUser
     .save()
-    .then(savedItem => res.json(savedItem));
+    .then(savedUser => res.json(savedUser));
     
 }) 
 

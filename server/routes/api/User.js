@@ -21,6 +21,7 @@ router.get('/',(req,res)=>{
 // @desc create an Item
 // @access Public
 router.post('/register', (req,res)=>{
+    
     const newUser = new User({
         name:req.body.name,
         email:req.body.email,
@@ -29,8 +30,8 @@ router.post('/register', (req,res)=>{
 
     newUser
     .save()
-    .then(savedUser => res.json(savedUser));
-    
+    .then(savedUser => res.json(savedUser))
+    .catch(err=>res.json(err));
 }) 
 
 
